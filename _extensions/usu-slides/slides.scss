@@ -1,0 +1,156 @@
+/*-- scss:defaults --*/
+
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic);
+@import url(https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap);
+
+// fonts
+$presentation-heading-font: Lato, sans-serif;
+$font-family-sans-serif: Lato, sans-serif;
+$presentation-font-size-root: 28px;
+
+// custom colors
+$midnight:       #1B2A4A;   /* dark navy — title slides         */
+$off-white:      #F7F4EF;   /* warm off-white — content bg      */
+$slate-blue:     #2E5FA3;   /* section headers, links           */
+$gold:           #C8962E;   /* accent — key terms, highlights   */
+$charcoal:       #2B2B2B;   /* body text                        */
+$light-gray:     #DDE3EB;   /* rule lines, boxes                */
+$muted:          #7A8494;   /* captions, footnotes              */
+$white:          #FFFFFF;
+
+// colors
+$body-bg:        $off-white;
+$body-color:     $charcoal;
+$secondary:      $slate-blue;
+$tertiary:       $gold;
+$link-color:     $slate-blue;
+$selection-bg:   rgba(0, 0, 0, 0.85);
+
+/*-- scss:rules --*/
+
+/* ── Title slide ─────────────────────────────────────────── */
+#title-slide .title {
+  font-family: "Playfair Display", serif;
+  font-size: 1.6em;
+  color: $white;
+}
+
+#title-slide .subtitle {
+  color: $gold;
+  font-style: italic;
+}
+
+#title-slide .author,
+#title-slide .date {
+  color: $light-gray;
+  font-size: 0.75em;
+}
+
+/* ── Slide headings ─────────────────────────────────────── */
+.reveal .slide-number > a[href*='title-slide'] {
+  display: none;
+}
+
+.reveal section h2 {
+  color: $secondary;
+  border-bottom: 2px solid $gold;
+  padding-bottom: 0.15em;
+}
+
+.reveal section h3 {
+  color: $gold;
+}
+
+/* ── Section divider slides ─────────────────────────────── */
+.reveal .section-slide h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 1.8em;
+  color: $white;
+  border-bottom: none;
+}
+
+/* ── Utility classes ────────────────────────────────────── */
+.h-center  { text-align: center; }
+
+.v-center  {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.small     { font-size: 0.75em; }
+.muted     { color: $muted; }
+.accent    { color: $gold; font-weight: 700; }
+.highlight { background-color: rgba(200, 150, 46, 0.15);
+             padding: 0.1em 0.3em;
+             border-radius: 0.2em; }
+
+/* ── Callout / pull-quote box ───────────────────────────── */
+.callout-box {
+  background-color: $midnight;
+  color: $white;
+  border-left: 5px solid $gold;
+  padding: 0.75em 1em;
+  border-radius: 0.4em;
+  font-style: italic;
+  margin: 0.5em 0;
+}
+
+/* ── Light info box ─────────────────────────────────────── */
+.info-box {
+  background-color: $light-gray;
+  padding: 0.75em 1em;
+  border-radius: 0.4em;
+  margin: 0.5em 0;
+}
+
+/* ── Two-column helper ──────────────────────────────────── */
+.cols-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5em;
+  align-items: start;
+}
+
+/* ── Equation emphasis ──────────────────────────────────── */
+.reveal .math-highlight {
+  font-size: 1.3em;
+  text-align: center;
+  color: $midnight;
+  margin: 0.5em 0;
+}
+
+/* ── Footer / caption text ──────────────────────────────── */
+.reveal .slide-footer {
+  font-size: 0.55em;
+  color: $muted;
+}
+
+/* ── Portable callouts (one source, three outputs) ───────── */
+/* .callout-note = the navy pull-quote box; .callout-tip = the light info box.
+   Both are written as Quarto callouts so beamer and Typst render them too.
+   Quarto's own reveal rules (div.callout.callout-style-simple) shrink the text
+   to 0.7em and paint a coloured left edge, so these must out-specify them. */
+.reveal div.callout.callout-style-simple {
+  font-size: 1em !important;
+  border: none !important;
+  border-radius: 0.4em;
+  margin: 0.5em 0;
+}
+.reveal div.callout.callout-style-simple.callout-note {
+  background-color: $midnight;
+  color: $white;
+  border-left: 5px solid $gold !important;
+  font-style: italic;
+}
+.reveal div.callout.callout-style-simple.callout-tip {
+  background-color: $light-gray;
+  color: $charcoal;
+}
+.reveal div.callout.callout-style-simple.small { font-size: 0.75em !important; }
+.reveal div.callout .callout-body-container,
+.reveal div.callout .callout-body { padding: 0.75em 1em; }
+.reveal div.callout p:last-child { margin-bottom: 0; }
+.reveal div.callout.callout-note strong { color: $white; }
+.reveal div.callout.callout-note code { color: $gold; }

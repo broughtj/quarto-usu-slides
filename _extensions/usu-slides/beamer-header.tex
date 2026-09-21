@@ -1,0 +1,49 @@
+% Palette mirrors slides.scss
+\definecolor{midnight}{HTML}{1B2A4A}
+\definecolor{offwhite}{HTML}{F7F4EF}
+\definecolor{slateblue}{HTML}{2E5FA3}
+\definecolor{gold}{HTML}{C8962E}
+\definecolor{charcoal}{HTML}{2B2B2B}
+\definecolor{lightgray}{HTML}{DDE3EB}
+\definecolor{muted}{HTML}{7A8494}
+\setbeamercolor{normal text}{fg=charcoal, bg=offwhite}
+\setbeamercolor{palette primary}{fg=offwhite, bg=midnight}
+\setbeamercolor{frametitle}{fg=offwhite, bg=midnight}
+\setbeamercolor{title separator}{fg=gold}
+\setbeamercolor{progress bar}{fg=gold, bg=lightgray}
+\setbeamercolor{alerted text}{fg=gold}
+\setbeamercolor{example text}{fg=slateblue}
+\setbeamercolor{block title}{fg=offwhite, bg=slateblue}
+\setbeamercolor{block body}{fg=charcoal, bg=lightgray!40!offwhite}
+\setbeamercolor{footline}{fg=muted}
+\setbeamercolor{page number in head/foot}{fg=muted}
+\setbeamercolor{itemize item}{fg=gold}
+\setbeamercolor{enumerate item}{fg=gold}
+% Navy title page, matching the HTML deck. \titlepage raises a one-shot flag; the
+% background canvas paints navy while the flag is up and clears it at shipout, so
+% every later frame keeps the normal background (standout frames keep theirs too).
+\newif\ifnavytitle
+\setbeamertemplate{background canvas}{%
+  \ifnavytitle
+    {\color{midnight}\vrule width\paperwidth height\paperheight}\global\navytitlefalse
+  \else
+    \ifbeamercolorempty[bg]{background canvas}{}{\color{bg}\vrule width\paperwidth height\paperheight}%
+  \fi}
+\let\metropolistitlepage\titlepage
+\renewcommand{\titlepage}{%
+  \global\navytitletrue
+  \begingroup
+    \setbeamercolor{normal text}{fg=offwhite}%
+    \setbeamercolor{title}{fg=offwhite}%
+    \setbeamercolor{subtitle}{fg=gold}%
+    \setbeamercolor{author}{fg=offwhite}%
+    \setbeamercolor{institute}{fg=offwhite}%
+    \setbeamercolor{date}{fg=offwhite}%
+    \usebeamercolor[fg]{normal text}%
+    \metropolistitlepage
+  \endgroup}
+% Each `# Part ...` heading becomes a full navy standout frame, matching the HTML deck
+\AtBeginSection[]{\begin{frame}[standout]\insertsectionhead\end{frame}}
+% \mathbf{\mu}, \mathbf{\Sigma}: unicode-math's \mathbf uses the text font, which has
+% no bold Greek, so the symbols vanish. Route \mathbf through \symbf instead.
+\AtBeginDocument{\ifdefined\symbf\renewcommand{\mathbf}[1]{\symbf{#1}}\fi}

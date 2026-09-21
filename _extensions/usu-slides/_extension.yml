@@ -1,0 +1,39 @@
+title: USU Slides
+author: Tyler J. Brough
+version: 1.0.0
+quarto-required: ">=1.5.0"
+contributes:
+  formats:
+    common:
+      fig-align: center
+      code-overflow: wrap
+      date-format: "MMMM YYYY"
+    revealjs:
+      theme: slides.scss
+      slide-number: c/t
+      embed-resources: true
+      transition: fade
+      transition-speed: fast
+      incremental: false
+      title-slide-attributes:
+        data-background-color: "#1B2A4A"
+    beamer:
+      pdf-engine: lualatex
+      aspectratio: 169
+      theme: metropolis
+      themeoptions:
+        - progressbar=frametitle
+        - numbering=fraction
+        - block=fill
+        - sectionpage=none   # Part dividers are drawn as navy standout frames (beamer-header.tex)
+      navigation: empty
+      fontsize: 10pt
+      # No sansfont: Metropolis picks up Fira Sans / Fira Mono when they are installed as system fonts
+      include-in-header: beamer-header.tex
+    typst:
+      toc: true
+      number-sections: false
+      papersize: us-letter
+      margin:
+        x: 1in
+        y: 1in

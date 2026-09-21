@@ -1,0 +1,105 @@
+---
+# ONE SOURCE, THREE OUTPUTS: revealjs HTML, Beamer PDF, Typst handout (usu-slides extension).
+# Portable constructs only: .columns/.column, .fragment, callouts, blockquotes, tables,
+# images, fenced code. Number equations inside the math as \qquad (2.x); \tag does not
+# survive Typst. {.smaller} on a heading only affects HTML; pair it with a {=latex} \small block.
+title: "Deck Title"
+subtitle: "Source, Chapter N"
+author: "Tyler J. Brough"
+institute: |
+  DATA 5695 / 6695\
+  Data Analytics & Information Systems, Utah State University
+date: "September 2026"
+format:
+  usu-slides-revealjs:
+    output-file: deck.html
+  usu-slides-beamer:
+    output-file: deck-beamer.pdf
+  usu-slides-typst:
+    output-file: deck-handout.pdf
+---
+
+
+# Part I: First Part {background-color="#1B2A4A"}
+
+
+## Road Map
+
+| Part | Topic | Source |
+|------|-------|--------|
+| **I** | First part | §1 |
+| **II** | Second part | §2 |
+
+::: {.fragment}
+::: {.callout-tip appearance="minimal" icon="false"}
+Why this chapter matters for the rest of the course, in one sentence.
+:::
+:::
+
+
+## Two Columns and a Callout
+
+::: {.columns}
+::: {.column width="50%"}
+**Left**
+
+- One line per bullet
+- At most six per column
+:::
+::: {.column width="50%"}
+**Right**
+
+- Tables, code, or math
+- Keep code lines under 85 characters
+:::
+:::
+
+::: {.fragment}
+::: {.callout-note appearance="minimal" icon="false"}
+The takeaway for this slide.
+:::
+:::
+
+
+## Code and a Quoted Result
+
+```julia
+using Distributions
+cdf(Binomial(25, 0.2), 3)     # 0.234
+```
+
+The probability is **0.234**.
+
+
+# Part II: Second Part {background-color="#1B2A4A"}
+
+
+## Smaller Text {.smaller}
+
+```{=latex}
+\small
+```
+
+Use this pair when a table or derivation needs a little more room.
+
+$$f(x; \lambda) = e^{-\lambda}\frac{\lambda^x}{x!}, \qquad x = 0, 1, \ldots \qquad (2.1)$$
+
+
+## What to Take Away
+
+::: {.columns}
+::: {.column width="50%"}
+**Concepts**
+
+- ...
+:::
+::: {.column width="50%"}
+**Machinery**
+
+- ...
+:::
+:::
+
+::: {.fragment}
+**Questions?**
+:::
