@@ -47,3 +47,6 @@
 % \mathbf{\mu}, \mathbf{\Sigma}: unicode-math's \mathbf uses the text font, which has
 % no bold Greek, so the symbols vanish. Route \mathbf through \symbf instead.
 \AtBeginDocument{\ifdefined\symbf\renewcommand{\mathbf}[1]{\symbf{#1}}\fi}
+% Operator names (\ln, \exp, \max) default to the Roman text family, which pulls in
+% Latin Modern Roman next to Fira. Draw them from the math font's upright glyphs instead.
+\AtBeginDocument{\ifdefined\setoperatorfont\setoperatorfont{\symup}\fi}
